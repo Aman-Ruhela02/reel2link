@@ -1,9 +1,20 @@
 import { API_URL } from "../config/api";
+import { useState } from "react";
 
 
 export default function ResultCard({ result }) {
-  const copyCaption = () => {
-    navigator.clipboard.writeText(result.caption);
+   const [copied, setCopied] = useState(false);
+  const copyCaption = async () => {
+    try {
+      await navigator.clipboard.writeText(result.caption);
+      setCopied(true);
+
+      setTimeout(() => {
+        setCopied(false);
+      }, 2000);
+    } catch (err) {
+      console.error("Copy failed", err);
+    }
   };
 
   return (
@@ -14,37 +25,48 @@ export default function ResultCard({ result }) {
         {result.caption}
       </div>
 
-      <button
-        onClick={copyCaption}
-        className="mt-4 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600"
-      >
-        Copy Caption
-      </button>
+     <button
+  onClick={copyCaption}
+  className={`mt-4 px-4 py-2 rounded-lg text-white transition ${
+    copied
+      ? "bg-green-600"
+      : "bg-green-500 hover:bg-green-600"
+  }`}
+>
+  {copied ? "Copied ✓" : "Copy Caption"}
+</button>
+
 
       {/* INLINE AD (FUTURE) */}
       {/* <div className="mt-6 bg-gray-50 border border-dashed border-gray-300 rounded-lg p-4 text-center text-sm text-gray-500">
         Sponsored content
       </div> */}
 
-      {result.links?.length > 0 && (
-        <div className="mt-6">
-          <h3 className="font-semibold mb-2">Links Found</h3>
-          <ul className="space-y-2">
-            {result.links.map((link, i) => (
-              <li key={i}>
-                <a
-                  href={link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-600 underline break-all"
-                >
-                  {link}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+     {result.links.map((link, i) => {
+  const cleanLink = link.replace(/[\"'\)\]\.,]+$/g, "");
+
+  return (
+    <li key={i}>
+      <a
+  href={cleanLink}
+  target="_blank"
+  rel="noopener noreferrer"
+  onClick={() => {
+    if (window.umami) {
+window.umami.track("external-link-click", {
+  url: cleanLink,
+});
+    }
+  }}
+  className="text-blue-600 underline break-all"
+>
+  {cleanLink}
+</a>
+
+    </li>
+  );
+})}
+
 
       {result.videoUrl ? (
        <a

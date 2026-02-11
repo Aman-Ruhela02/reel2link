@@ -38,12 +38,18 @@ export default function ReelForm({ setResult }) {
       />
 
       <button
-        type="submit"
-        disabled={loading}
-        className="px-6 py-3 rounded-xl bg-blue-600 text-white font-medium hover:bg-blue-700 disabled:opacity-50"
-      >
-        {loading ? <Loader /> : "Extract"}
-      </button>
+  type="submit"
+  disabled={loading}
+  onClick={() => {
+    if (window.umami) {
+      window.umami.track("extract-button-click");
+    }
+  }}
+  className="px-6 py-3 rounded-xl bg-blue-600 text-white font-medium hover:bg-blue-700 disabled:opacity-50"
+>
+  {loading ? <Loader /> : "Extract"}
+ </button>
+ 
     </form>
   );
 }
