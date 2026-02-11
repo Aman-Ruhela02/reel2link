@@ -40,6 +40,12 @@ app.get("/", (req, res) => {
   res.send("Reel2Link Backend is running 🚀");
 });
 
+//cron hack logic
+app.get("/ping", (req, res) => {
+  res.status(200).send("Server is awake");
+});
+
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
