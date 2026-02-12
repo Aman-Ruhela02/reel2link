@@ -11,7 +11,7 @@ const app = express();
 
 const allowedOrigins = [
   "http://localhost:5173",          // dev frontend
-  "https://reel2link.vercel.app",   // prod frontend (update later)
+  "https://reel2link.site",   // prod frontend (update later)
 ];
 
 // Middlewares
