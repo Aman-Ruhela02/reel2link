@@ -2,9 +2,16 @@ import { useState } from "react";
 import Navbar from "./components/Navbar";
 import ReelForm from "./components/ReelForm";
 import ResultCard from "./components/ResultCard";
+import { useEffect  } from "react";
+import { trackEvent } from "./utils/analytics";
+
 
 export default function App() {
   const [result, setResult] = useState(null);
+  useEffect(() => {
+  trackEvent("page_view");
+}, []);
+
 
   return (
     <div className="min-h-[100dvh] flex flex-col bg-gradient-to-br from-gray-50 via-white to-gray-100">

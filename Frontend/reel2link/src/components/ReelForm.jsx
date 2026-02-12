@@ -1,7 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 import Loader from "./Loader";
-import { API_URL } from "../config/api";
+import { API_URL } from "../config/api.js";
+import { trackEvent } from "../utils/analytics.js";
 
 export default function ReelForm({ setResult }) {
   const [url, setUrl] = useState("");
@@ -9,16 +10,34 @@ export default function ReelForm({ setResult }) {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    if (!url) return;
+    if (!url) {
+      trackEvent("invalid_url_submitted");
+      return;
+    }
 
     setLoading(true);
     setResult(null);
 
+    trackEvent("extract_button_click");
+
     try {
       const res = await axios.post(`${API_URL}/api/extract`, { url });
+
+      if (res.data.success) {
+        trackEvent("caption_extracted_successfully");
+      } else {
+        trackEvent("caption_extraction_failed");
+      }
+
       setResult(res.data);
     } catch {
-      setResult({ success: false, message: "Failed to fetch reel data" });
+      trackEvent("caption_extraction_error");
+
+      setResult({
+        success: false,
+        message:
+          "Unable to fetch reel/post caption. Please refresh the page or try again after some time.",
+      });
     } finally {
       setLoading(false);
     }
@@ -31,25 +50,19 @@ export default function ReelForm({ setResult }) {
     >
       <input
         type="text"
-        placeholder="Paste Instagram reel URL here"
+        placeholder="Paste Instagram reel or post URL here"
         value={url}
         onChange={(e) => setUrl(e.target.value)}
         className="flex-1 px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 outline-none"
       />
 
       <button
-  type="submit"
-  disabled={loading}
-  onClick={() => {
-    if (window.umami) {
-      window.umami.track("extract-button-click");
-    }
-  }}
-  className="px-6 py-3 rounded-xl bg-blue-600 text-white font-medium hover:bg-blue-700 disabled:opacity-50"
->
-  {loading ? <Loader /> : "Extract"}
- </button>
- 
+        type="submit"
+        disabled={loading}
+        className="px-6 py-3 rounded-xl bg-blue-600 text-white font-medium hover:bg-blue-700 disabled:opacity-50"
+      >
+        {loading ? <Loader /> : "Extract"}
+      </button>
     </form>
   );
 }
