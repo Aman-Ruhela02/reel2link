@@ -13,14 +13,14 @@ export default function App() {
       {/* HERO */}
       <section className="px-4 pt-14 pb-12 text-center">
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 leading-tight">
-          Turn Instagram Reel Captions
+          Instagram Reel Caption Extractor
           <br className="hidden sm:block" />
-          into Clickable Links
+          Turn Captions into Clickable Links
         </h1>
 
         <p className="text-gray-600 max-w-xl mx-auto mb-8 text-base sm:text-lg">
-          Extract captions, uncover hidden links, and download reels instantly —
-          no login, no signup.
+          Extract Instagram reel captions instantly and convert hidden links into
+          clickable format — no login, no signup required.
         </p>
 
         <a
@@ -43,27 +43,27 @@ export default function App() {
 
         {/* FUTURE INLINE AD (MOBILE FIRST) */}
         <div className="mt-10 md:hidden bg-gray-100 border border-dashed border-gray-300 rounded-xl p-4 text-center text-sm text-gray-500">
-          Ad space (Coming soon)
+          Advertisement (Coming soon)
         </div>
       </main>
 
       {/* WHY SECTION */}
-      <section className="bg-white py-10 md:py-16 px-4">
+      <section className="bg-white py-12 md:py-16 px-4">
         <div className="max-w-5xl mx-auto text-center">
           <h2 className="text-2xl md:text-3xl font-bold mb-10">
-            Why Instagram Links Are Frustrating
+            Why Instagram Reel Links Are Frustrating
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {[
               "❌ Links in captions are not clickable",
-              "❌ Copy-pasting captions is annoying",
-              "❌ Important links are hidden in text",
-              "❌ Instagram doesn’t allow easy downloads",
+              "❌ Copy-pasting captions is slow and annoying",
+              "❌ Important affiliate links are hidden in text",
+              "❌ Researching competitor captions takes time",
             ].map((item, i) => (
               <div
                 key={i}
-                className="bg-gray-50  rounded-xl px-5 py-4 text-gray-700 text-left md:text-center"
+                className="bg-gray-50 rounded-xl px-5 py-4 text-gray-700 text-left md:text-center"
               >
                 {item}
               </div>
@@ -73,17 +73,17 @@ export default function App() {
       </section>
 
       {/* HOW IT HELPS */}
-      <section className="bg-gray-50 py-10 md:py-16 px-4">
+      <section className="bg-gray-50 py-12 md:py-16 px-4">
         <div className="max-w-5xl mx-auto text-center">
           <h2 className="text-2xl md:text-3xl font-bold mb-10">
-            How Reel2Link Helps
+            How Reel2Link Helps Creators & Marketers
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              "✔ Extract captions instantly",
-              "✔ Click hidden links directly",
-              "✔ Download reels when available",
+              "✔ Extract reel captions instantly",
+              "✔ Make hidden links clickable",
+              "✔ Copy captions easily for research",
             ].map((item, i) => (
               <div
                 key={i}
@@ -92,6 +92,104 @@ export default function App() {
                 {item}
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SEO CONTENT */}
+      <section className="bg-white py-14 md:py-20 px-4">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center">
+            Free Instagram Reel Caption Extractor Tool
+          </h2>
+
+          <p className="text-gray-600 mb-6 leading-relaxed">
+            Reel2Link is a free online Instagram Reel Caption Extractor that helps
+            creators, affiliate marketers, and social media managers extract
+            captions and convert links into clickable format. Instagram does not
+            allow clickable links inside reel captions, which makes accessing
+            affiliate links, course links, or website URLs difficult.
+          </p>
+
+          <p className="text-gray-600 mb-6 leading-relaxed">
+            With Reel2Link, you simply paste the Instagram reel URL and instantly
+            get the full caption displayed in a clean and easy-to-copy format.
+            Any links inside the caption become clickable, saving you time and
+            improving workflow efficiency.
+          </p>
+
+          <h3 className="text-xl font-semibold mt-8 mb-4">
+            Who Can Use This Tool?
+          </h3>
+
+          <ul className="list-disc pl-6 text-gray-600 space-y-2 mb-6">
+            <li>Instagram content creators</li>
+            <li>Affiliate marketers</li>
+            <li>Digital marketing agencies</li>
+            <li>Social media managers</li>
+            <li>Content researchers and analysts</li>
+          </ul>
+
+          <h3 className="text-xl font-semibold mt-8 mb-4">
+            Why Use Reel2Link?
+          </h3>
+
+          <ul className="list-disc pl-6 text-gray-600 space-y-2">
+            <li>Fast and simple interface</li>
+            <li>No login required</li>
+            <li>Works on mobile and desktop</li>
+            <li>Secure and lightweight</li>
+            <li>Free to use</li>
+          </ul>
+        </div>
+      </section>
+
+      {/* FAQ SECTION */}
+      <section className="bg-gray-50 py-14 px-4">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-10">
+            Frequently Asked Questions
+          </h2>
+
+          <div className="space-y-6 text-gray-700">
+            <div>
+              <h3 className="font-semibold mb-2">
+                Is Reel2Link free to use?
+              </h3>
+              <p>
+                Yes, Reel2Link is completely free to use for extracting Instagram
+                reel captions and making links clickable.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="font-semibold mb-2">
+                Do I need to log in?
+              </h3>
+              <p>
+                No login or signup is required. Simply paste the reel link and
+                extract the caption instantly.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="font-semibold mb-2">
+                Does Reel2Link store Instagram data?
+              </h3>
+              <p>
+                No. We do not store or host Instagram content. We only process
+                publicly available caption text for easier access.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="font-semibold mb-2">
+                Can I download Instagram reels?
+              </h3>
+              <p>
+                Download functionality is currently not available.
+              </p>
+            </div>
           </div>
         </div>
       </section>
